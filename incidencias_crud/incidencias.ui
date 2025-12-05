@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1000</width>
+    <height>700</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Gestión de Incidencias</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayoutMain">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayoutTop">
+      <item>
+       <widget class="QGroupBox" name="groupBoxFiltros">
+        <property name="title">
+         <string>Filtros</string>
+        </property>
+        <layout class="QFormLayout" name="formLayoutFiltros">
+         <item row="0" column="0">
+          <widget class="QLabel" name="labelFiltroTexto">
+           <property name="text">
+            <string>Texto (cliente, título...):</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLineEdit" name="txtFiltroTexto"/>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="labelFiltroEstado">
+           <property name="text">
+            <string>Estado:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QComboBox" name="cmbFiltroEstado">
+           <item>
+            <property name="text">
+             <string>Todos</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Abierta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>En curso</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Cerrada</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="labelFiltroPrioridad">
+           <property name="text">
+            <string>Prioridad:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QComboBox" name="cmbFiltroPrioridad">
+           <item>
+            <property name="text">
+             <string>Todas</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Alta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Media</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Baja</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="3" column="0" colspan="2">
+          <widget class="QPushButton" name="btnAplicarFiltros">
+           <property name="text">
+            <string>Aplicar filtros</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0" colspan="2">
+          <widget class="QPushButton" name="btnLimpiarFiltros">
+           <property name="text">
+            <string>Limpiar filtros</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="groupBoxDashboard">
+        <property name="title">
+         <string>Dashboard</string>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayoutDashboard">
+         <item>
+          <widget class="QLabel" name="lblTotalIncidencias">
+           <property name="text">
+            <string>Total: 0</string>
+           </property>
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="lblAbiertas">
+           <property name="text">
+            <string>Abiertas: 0</string>
+           </property>
+           <property name="styleSheet">
+            <string>color: red;</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="lblEnCurso">
+           <property name="text">
+            <string>En curso: 0</string>
+           </property>
+           <property name="styleSheet">
+            <string>color: orange;</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="lblCerradas">
+           <property name="text">
+            <string>Cerradas: 0</string>
+           </property>
+           <property name="styleSheet">
+            <string>color: green;</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayoutPrioridades">
+           <item>
+            <widget class="QLabel" name="lblAlta">
+             <property name="text">
+              <string>Alta: 0</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="lblMedia">
+             <property name="text">
+              <string>Media: 0</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="lblBaja">
+             <property name="text">
+              <string>Baja: 0</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayoutCenter">
+      <item>
+       <widget class="QTableWidget" name="tablaIncidencias">
+        <property name="columnCount">
+         <number>6</number>
+        </property>
+        <column/>
+        <column/>
+        <column/>
+        <column/>
+        <column/>
+        <column/>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="groupBoxFormulario">
+        <property name="title">
+         <string>Nueva / Editar incidencia</string>
+        </property>
+        <layout class="QFormLayout" name="formLayoutForm">
+         <item row="0" column="0">
+          <widget class="QLabel" name="labelTitulo">
+           <property name="text">
+            <string>Título:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLineEdit" name="txtTitulo"/>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="labelCliente">
+           <property name="text">
+            <string>Cliente:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLineEdit" name="txtCliente"/>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="labelDescripcion">
+           <property name="text">
+            <string>Descripción:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QTextEdit" name="txtDescripcion"/>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="labelEstado">
+           <property name="text">
+            <string>Estado:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QComboBox" name="cmbEstado">
+           <item>
+            <property name="text">
+             <string>Abierta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>En curso</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Cerrada</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="labelPrioridad">
+           <property name="text">
+            <string>Prioridad:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QComboBox" name="cmbPrioridad">
+           <item>
+            <property name="text">
+             <string>Alta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Media</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Baja</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="5" column="0">
+          <widget class="QLabel" name="labelFecha">
+           <property name="text">
+            <string>Fecha:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="1">
+          <widget class="QDateEdit" name="dateFecha">
+           <property name="calendarPopup">
+            <bool>true</bool>
+           </property>
+           <property name="displayFormat">
+            <string>yyyy-MM-dd</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="0" colspan="2">
+          <layout class="QHBoxLayout" name="horizontalLayoutBotones">
+           <item>
+            <widget class="QPushButton" name="btnNuevaIncidencia">
+             <property name="text">
+              <string>Crear incidencia</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnActualizarIncidencia">
+             <property name="text">
+              <string>Actualizar seleccionada</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnEliminarIncidencia">
+             <property name="text">
+              <string>Eliminar seleccionada</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayoutFooter">
+      <item>
+       <widget class="QPushButton" name="btnTema">
+        <property name="text">
+         <string>Modo oscuro/claro</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="lblTemaActual">
+        <property name="text">
+         <string>Tema: claro</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QTextEdit" name="txtLog">
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
