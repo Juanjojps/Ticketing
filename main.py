@@ -5,7 +5,9 @@ from PySide6.QtUiTools import QUiLoader
 from datetime import datetime
 import os
 
-
+# Evitar conflicto con plugins de otros proyectos (ej: TimeControl)
+if "PYSIDE_DESIGNER_PLUGINS" in os.environ:
+    del os.environ["PYSIDE_DESIGNER_PLUGINS"]
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -15,7 +17,7 @@ class MainWindow(QMainWindow):
         loader = QUiLoader()
         # Asegurarse de que la ruta es correcta
         current_dir = os.path.dirname(os.path.abspath(__file__))
-        ui_path = os.path.join(current_dir, "incidencias_crud", "incidencias.ui")
+        ui_path = os.path.join(current_dir, "ui", "incidencias.ui")
         
         ui_file = QtCore.QFile(ui_path)
         if not ui_file.open(QtCore.QFile.ReadOnly):
